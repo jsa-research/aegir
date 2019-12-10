@@ -66,6 +66,7 @@ describe('lint', () => {
     return dependenciesShouldPassLinting({
       'some-unstable-dep': '0.0.1',
       'some-dev-dep': '^0.1.0',
+      'some-pinned-dev-dep': '0.1.0',
       'some-stable-dep': '^1.0.0',
       'some-pinned-dep': '1.0.0'
     })
