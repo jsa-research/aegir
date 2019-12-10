@@ -64,9 +64,8 @@ describe('lint', () => {
 
   it('succeeds when package.json contains dependencies with good versions', function () {
     return dependenciesShouldPassLinting({
-      'some-unstable-dep': '~0.0.1',
+      'some-unstable-dep': '0.0.1',
       'some-dev-dep': '^0.1.0',
-      'some-other-dev-dep': '~0.1.0',
       'some-stable-dep': '^1.0.0',
       'some-pinned-dep': '1.0.0'
     })
@@ -75,6 +74,12 @@ describe('lint', () => {
   it('fails when package.json contains dependencies with carets for unstable deps', function () {
     return dependenciesShouldFailLinting({
       'some-dep': '^0.0.1'
+    })
+  })
+
+  it('fails when package.json contains dependencies with tildes for unstable deps', function () {
+    return dependenciesShouldFailLinting({
+      'some-dep': '~0.0.1'
     })
   })
 
@@ -123,6 +128,12 @@ describe('lint', () => {
   it('fails when package.json contains dependencies with >= for development deps', function () {
     return dependenciesShouldFailLinting({
       'some-dep': '>=0.1.0'
+    })
+  })
+
+  it('fails when package.json contains dependencies with tildes for development deps', function () {
+    return dependenciesShouldFailLinting({
+      'some-dep': '~0.1.0'
     })
   })
 
